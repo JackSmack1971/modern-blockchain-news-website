@@ -42,6 +42,15 @@ The CI pipeline performs the following steps:
 
 CI ensures code quality and prevents broken builds from reaching production.
 
+## Pre-deployment Checklist
+
+Before deploying, confirm the following items:
+
+- **Environment variables present** – check that all required variables in `.env.local` are defined. You can verify values in a Node.js shell using `console.log(process.env.VAR_NAME)` or run a validation script that asserts each variable is set.
+- **Tests passing** – ensure `npm test` and any end-to-end tests complete without failures.
+- **Build completed** – run `npm run build` and confirm the build output is generated successfully.
+- **Monitoring configured** – confirm log aggregation and alerting are active for the target environment.
+
 ## Logging and Monitoring
 
 Application logs are written to stdout/stderr and collected by the hosting platform. Configure log aggregation (e.g., with a service like Datadog or Logtail) to monitor errors and performance. Enable alerts for unusual activity or failures.
