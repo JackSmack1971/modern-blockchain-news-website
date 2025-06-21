@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { APIError, ValidationError } from './errors';
+import type { CryptoPrice } from '../types';
 
 const coinSchema = z.object({
   id: z.string().min(1),
@@ -38,7 +39,7 @@ export async function fetchWithRetry<T = unknown>(
 export async function getCryptoPrice(params: {
   id: string;
   vs_currency: string;
-}): Promise<number> {
+}): Promise<CryptoPrice> {
   const parsed = coinSchema.safeParse(params);
   if (!parsed.success) {
     throw new ValidationError('Invalid parameters');
@@ -58,5 +59,9 @@ export async function getCryptoPrice(params: {
   if (typeof price !== 'number') {
     throw new APIError('Price data not found');
   }
-  return price;
+  return {
+    id: parsed.data.id,
+    vs_currency: parsed.data.vs_currency,
+    price,
+  };
 }

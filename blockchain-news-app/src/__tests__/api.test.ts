@@ -26,8 +26,12 @@ describe('getCryptoPrice', () => {
       ok: true,
       json: async () => SUCCESS_RESPONSE,
     });
-    const price = await getCryptoPrice({ id: 'bitcoin', vs_currency: 'usd' });
-    expect(price).toBe(50000);
+    const result = await getCryptoPrice({ id: 'bitcoin', vs_currency: 'usd' });
+    expect(result).toEqual({
+      id: 'bitcoin',
+      vs_currency: 'usd',
+      price: 50000,
+    });
   });
 
   it('throws validation error for invalid params', async () => {
