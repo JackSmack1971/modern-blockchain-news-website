@@ -18,7 +18,8 @@
     "next": "15.3.4",
     "next-auth": "^4",
     "contentful": "^10",
-    "coingecko-api": "^1"
+    "coingecko-api": "^1",
+    "zod": "^3"
   },
   "devDependencies": {
     "typescript": "^5",
