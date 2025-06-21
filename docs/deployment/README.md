@@ -4,11 +4,15 @@ This document outlines how to deploy the Blockchain News Website and describes r
 
 ## Environment Variables
 
-Create a `.env` file in `blockchain-news-app` with the following variables:
+Copy `.env.example` to `.env.local` in `blockchain-news-app` and set the following variables:
 
 - `DATABASE_URL` – connection string for the production database.
+- `COINGECKO_API_KEY` – API key for fetching market data from CoinGecko.
+- `COINMARKETCAP_API_KEY` – API key for CoinMarketCap requests.
 - `NEXTAUTH_SECRET` – secret used by NextAuth for session encryption.
 - `NEXT_PUBLIC_API_ENDPOINT` – URL of the news API service.
+- `CMS_SPACE_ID` – Contentful space identifier.
+- `CMS_ACCESS_TOKEN` – access token for Contentful CMS.
 
 All sensitive values should be stored securely and never committed to version control.
 

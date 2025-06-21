@@ -12,7 +12,11 @@ This repository contains the source code for a Next.js-based news platform focus
    cd blockchain-news-app
    npm install
    ```
-2. Start the development server:
+2. Copy the example environment file and fill in your values:
+   ```bash
+   cp .env.example .env.local
+   ```
+3. Start the development server:
    ```bash
    npm run dev
    ```
@@ -38,4 +42,4 @@ npm test           # unit tests
 npm run e2e        # end-to-end tests
 ```
 
-Refer to `AGENTS.md` for full development standards and validation steps.
+Refer to `AGENTS.md` for full development standards and validation steps. All required environment variables are listed in `blockchain-news-app/.env.example`.
