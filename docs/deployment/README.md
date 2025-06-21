@@ -1,0 +1,48 @@
+# Deployment Guide
+
+This document outlines how to deploy the Blockchain News Website and describes required environment variables, build commands, and the CI workflow. It also summarizes logging and backup strategies.
+
+## Environment Variables
+
+Create a `.env` file in `blockchain-news-app` with the following variables:
+
+- `DATABASE_URL` – connection string for the production database.
+- `NEXTAUTH_SECRET` – secret used by NextAuth for session encryption.
+- `NEXT_PUBLIC_API_ENDPOINT` – URL of the news API service.
+
+All sensitive values should be stored securely and never committed to version control.
+
+## Build Commands
+
+Run these commands in the `blockchain-news-app` directory:
+
+```bash
+npm install         # install dependencies
+npm run lint        # lint the codebase
+npm run type-check  # verify TypeScript types
+npm test            # run unit tests
+npm run e2e         # run end-to-end tests
+npm run build       # create a production build
+```
+
+These commands are executed automatically in CI and should succeed before deploying.
+
+## Continuous Integration Workflow
+
+The CI pipeline performs the following steps:
+
+1. Install dependencies using `npm ci`.
+2. Lint the code, run type checking, and execute all tests.
+3. Build the application.
+4. Deploy the build artifact to the target environment if all checks pass.
+
+CI ensures code quality and prevents broken builds from reaching production.
+
+## Logging and Monitoring
+
+Application logs are written to stdout/stderr and collected by the hosting platform. Configure log aggregation (e.g., with a service like Datadog or Logtail) to monitor errors and performance. Enable alerts for unusual activity or failures.
+
+## Backup Strategy
+
+The production database is backed up daily using automated snapshots. Store backups in a secure location with a retention period that meets business requirements. Regularly test restoring from backups to confirm integrity.
+
