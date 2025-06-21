@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   experimental: {
+    // @ts-expect-error - logging is non-standard in Next.js config
     logging: {
       level: 'verbose',
     },
@@ -185,6 +186,7 @@ const nextConfig: NextConfig = {
 
   output: 'standalone',
 
+  // @ts-ignore - logging is non-standard in Next.js config
   logging: {
     fetches: {
       fullUrl: true,
